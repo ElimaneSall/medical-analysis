@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="">
+      
+                <div class="form-wrapper">
+                    <div
+                      class="wow fadeInRight"
+                      data-wow-duration="2s"
+                      data-wow-delay="0.2s"
+                    >
+                      <div class="panel panel-skin">
+                        <div class="panel-heading">
+                          <h3 class="panel-title text-center">
+                            Se connecter 
+                          </h3>
+                        </div>
+                        <div class="panel-body">
+                          <form method="post" role="form" class="lead">
+                            {% csrf_token %}
+                            <div class="col">
+                              <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                  <label>Pseudo</label>
+                                  <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    class="form-control input-md"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                  <label>Mot de passe</label>
+                                  <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    class="form-control input-md"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+              
+                           
+                            <input
+                              type="submit"
+                              value="Se connecter"
+                              class="btn btn-skin btn-block btn-lg"
+                            />
+              
+                            <p class="lead-footer">
+                              Ou 
+                            </p>
+                            <a class="btn btn-skin btn-block btn-lg" href="{% url 'signup' %}">S'incrire</a>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+</div>
+
+{% endblock %}
+
+</html>

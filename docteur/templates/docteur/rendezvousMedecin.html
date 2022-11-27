@@ -1,0 +1,72 @@
+{% extends 'docteur/baseDocteur.html' %} {% load static %} {% block content %}
+<h1>RV medecin</h1>
+<button class="btn btn-skin btn-lg" style="margin: 10px">
+  <a class="nav-link text-center" href="{% url 'VoirDossierMedicalMedecin' %}"
+    >Créer un rendez-vous pour un patient</a
+  >
+</button>
+
+<div class="row">
+  <div class="col-lg-7 col-md-12">
+    <div class="card" style="min-height: 485px">
+      <div class="card-header card-header-text">
+        <h4 class="card-title">Mes rendez-vous</h4>
+        <p class="category">la liste</p>
+      </div>
+      <div class="card-content table-responsive">
+        <table class="table table-hover">
+          <thead class="text-primary">
+            <tr>
+              <th>Patient</th>
+              <th>Heure Début</th>
+              <th>Heure Fin</th>
+              <th>Mes problèmes</th>
+              <th>Statut</th>
+              <th>Confirmer</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for rv in RendezVousMedicalDocteur %}
+            <tr>
+              <td>
+                <div style="display: flex; flex-direction: row">
+                  <img
+                    width="50px"
+                    height="50px"
+                    src="{% static 'medicio/img/dummy/img-1.jpg' %}"
+                    class="img-responsive"
+                    alt=""
+                  />
+                  {{ rv.patient.prenom }} {{ rv.patient.nom }}
+                </div>
+              </td>
+              <td>{{rv.heureDebut}}</td>
+              <td>{{rv.heureDebut}}</td>
+              <td>{{ rv.objectRV}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-12">
+    <div class="card" style="min-height: 485px">
+      <div class="card-header card-header-text">
+        <h4 class="card-title">Statistiques des rendez-vous</h4>
+      </div>
+      <div class="card-content">
+        <p>total rv</p>
+        <p>total rv today</p>
+        <p>total rv annule today</p>
+        <p>total rv next week</p>
+        <p>moyen rv par jour</p>
+        <p>moyen rv par semaine</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

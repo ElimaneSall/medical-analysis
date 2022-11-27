@@ -1,0 +1,27 @@
+{% extends 'docteur/baseDocteur.html' %} {% block content %}
+<h1>Analyse</h1>
+<button class="btn btn-skin btn-lg">
+  <a
+    class="nav-link text-center text-light"
+    href="{% url 'voirAnalyseMedicalMedecin' %}"
+    >Voir mes analyses medicales</a
+  >
+</button>
+
+<form method="POST" class="post-form" enctype="multipart/form-data">
+  {% csrf_token %} {{ form.as_p }}
+  <div class="col-xs-6 col-sm-6 col-md-6">
+    <div class="form-group">
+      <label>Matricule patient</label>
+      <input
+        type="text"
+        name="matricule"
+        id="matricule"
+        class="form-control input-md"
+      />
+    </div>
+  </div>
+  <br />
+  <input type="submit" value="Envoyer" class="btn btn-skin btn-lg" />
+</form>
+{% endblock %}
