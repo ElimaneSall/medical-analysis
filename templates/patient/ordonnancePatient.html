@@ -1,0 +1,36 @@
+{% extends 'patient/basePatient.html' %} {% load static %} {% block content %}
+<h1>Medicaments</h1>
+<h6>Nom du patient: {{ request.user }}</h6>
+<div class="row mr-0 ml-0" style="justify-content: center">
+  <div class="col-lg-10 col-md-12">
+    <div class="card" style="min-height: 485px">
+      <div class="card-header card-header-text">
+        <h4 class="card-title">Mes ordonnances</h4>
+      </div>
+      <div class="card-content">
+        {% for dossier in DossierMedicalPatient %}
+        <div>
+          <h4>Consultation du {{ dossier.date_creationDossierMedical}}</h4>
+          <div class="d-flex justify-content-center">
+            <img
+              width="200px"
+              height="200px"
+              src="{{ dossier.qrCode.url }}"
+              class="img-responsive"
+              alt=""
+            />
+          </div>
+          <p class="pl-5">
+            Présinscript par
+            <span class="font-weight-bold">
+              Docteur{{dossier.docteur.nom}}, Généraliste à l'hopital Fann
+            </span>
+          </p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {{qrcode}}
