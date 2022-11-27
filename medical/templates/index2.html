@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<body>
+<!--<p>{% blocktrans %}A multiline translatable-->
+<!--literal.{% endblocktrans %}</p>-->
+<div class=" ">
+          <!--Item 1-->
+          <div class="bodyHomePage flex items-end justify-end" style="justify-content:flex-end">
+            <div class="bg_titre px-5 flex flex-col justify-center " style="flex-direction:column!important; width:600px">
+             <div>
+              <p class="text-light text-5xl mb-10 text-xl-end bg-red-300 "> Allo Docteur, la santé pour tous
+              </p>
+            </div>
+              <div class="button mt-10">
+<button class="bg-blue-500 py-10  " >
+  <a href="{% url 'login_user' %}"><p class="text-white ">Se connecter</p></a>
+
+</button>
+<button  class="bg-white py-10" >
+  <a href="{% url 'signup' %}"> <p class="text-dark ">S'inscrire</p></a>
+  
+  </button>
+</div>
+            </div>
+
+          </div>
+</div>    
+
+{% endblock content %}
+    </body>
+
+      <script src="https://kit.fontawesome.com/99b33c1940.js" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+ crossorigin="anonymous">
+</script>
+
+</body>
+</html>

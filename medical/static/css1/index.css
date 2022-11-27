@@ -1,0 +1,135 @@
+html {
+  background-color: white;
+}
+#header {
+  padding-left: 10px;
+  position: relative;
+  height: 50px;
+  background: #0080ff;
+  z-index: 7;
+}
+#my_bg {
+  background: #0080ff;
+}
+#my_bg_green {
+  background: #03a100;
+}
+
+.text_white {
+  color: white;
+}
+#my_color {
+  color: white !important;
+}
+.my_li {
+  background: #0080ff;
+  color: white !important;
+  /*width: 120px;*/
+  border-radius: 30px;
+  text-align: center;
+}
+#rechercher {
+  background-color: #0080ff;
+  color: white;
+  border: 2px #03a100 solid;
+  border-radius: 30px;
+  width: 200px;
+}
+#rechercher:hover {
+  border: 2px;
+  border: 2px #03a100 solid;
+  background-color: white;
+  color: #0080ff;
+}
+
+.my_input {
+  background-color: rgba(0, 0, 0, 0.059);
+  border: 2px #03a100 solid;
+  border-radius: 10px;
+}
+
+#my_color2 {
+  color: #0080ff;
+}
+#my_btn {
+  background-color: #03a100;
+  color: white;
+  font-size: larger;
+  border-radius: 30px;
+  width: 100px;
+}
+
+#my_btn2 {
+  background-color: #0080ff;
+  color: white;
+  width: 400px;
+  font-size: large;
+  border-radius: 30px;
+  margin-bottom: 2px;
+}
+.my_size {
+  font-size: 10px;
+}
+.yellow {
+  color: yellow;
+}
+.title {
+  margin: 0;
+  font-size: 10px;
+  font-weight: bold;
+}
+#my_btn {
+  background-color: #0080ff;
+  color: white;
+  border: 0;
+}
+#my_btn_green {
+  background-color: #03a100;
+  color: white;
+  border: 0;
+  width: 100px;
+  border-radius: 30px;
+}
+
+#marge {
+  margin-left: 60px !important;
+  margin-right: 60px;
+  margin-bottom: 2px;
+}
+
+.margin_left {
+  margin-left: 60px;
+  width: 100px !important;
+}
+
+.capas {
+  position: absolute;
+  height: 450px;
+}
+
+/* bloc pour le commentaire */
+
+.date {
+  font-size: 11px;
+}
+.comment-text {
+  font-size: 12px;
+}
+.fs-12 {
+  font-size: 12px;
+}
+.shadow-none {
+  box-shadow: none;
+}
+.name {
+  color: #007bff;
+}
+.cursor:hover {
+  color: #0080ff;
+}
+.cursor {
+  cursor: pointer;
+}
+.textarea {
+  resize: none;
+}

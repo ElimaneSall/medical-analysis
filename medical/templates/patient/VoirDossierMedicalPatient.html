@@ -1,0 +1,78 @@
+{% extends 'patient/basePatient.html' %} {% load static %} {% block content %}
+<h1>Dossier medical</h1>
+<h6>Nom du patient: {{ request.user }}</h6>
+<div class="row">
+  <div class="col-lg-7 col-md-12">
+    <div class="card" style="min-height: 485px">
+      <div class="card-header card-header-text">
+        <h4 class="card-title">Mes consultations</h4>
+        <p class="category">la liste</p>
+      </div>
+      <div class="card-content table-responsive">
+        <table class="table table-hover">
+          <thead class="text-primary">
+            <tr>
+              <th>Patient</th>
+              <th>Pronostic</th>
+              <th>Diagnostic</th>
+              <th>Medicaments</th>
+              <th>Date</th>
+              <th>Statut</th>
+              <th>Version pdf</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for dossier in DossierMedicalPatient %}
+            <tr>
+              <td>
+                <div style="display: flex; flex-direction: row">
+                  <img
+                    width="50px"
+                    height="50px"
+                    src="{% static 'medicio/img/dummy/img-1.jpg' %}"
+                    class="img-responsive"
+                    alt=""
+                  />
+                  {{ dossier.patient.prenom }} {{ dossier.patient.nom }}
+                </div>
+              </td>
+              <td>{{dossier.pronostic}}</td>
+              <td>{{dossier.diagnostic}}</td>
+              <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
+              <td>{{dossier.date_creationDossierMedical}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-12">
+    <div class="card" style="min-height: 485px">
+      <div class="card-header card-header-text">
+        <h4 class="card-title">Mes traitements</h4>
+      </div>
+      <div class="card-content">
+        <div class="streamline">
+          {% for dossier in DossierMedicalPatient %}
+          <div class="sl-item sl-primary">
+            <div class="sl-content">
+              <p>
+                <small class="text-muted"> {{dossier.diagnostic}}</small>
+              </p>
+              <p class="font-weight-bold">{{dossier.medicaments}}</p>
+              <p>Description</p>
+              <p>
+                Présinscript par Docteur{{dossier.docteur.nom}}, Généraliste à
+                l'hopital Fann
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

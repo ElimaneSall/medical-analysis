@@ -1,0 +1,188 @@
+{% extends 'patient/basePatient.html' %} {% load i18n %} {% block content %}
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header">
+          <div class="icon icon-warning">
+            <span class="material-icons">equalizer</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="category"><strong>Consultation</strong></p>
+          <h3 class="card-title">{{DossierMedicalPatient.count}}</h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons text-info">info</i>
+            <a href="{% url 'rendezvousMedecin' %}">voir les détails</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header">
+          <div class="icon icon-rose">
+            <span class="material-icons">date_range</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="category"><strong>Rendez vous</strong></p>
+          <h3 class="card-title">{{RendezVousMedicalPatient.count}}</h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">local_offer</i> voir les détails
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header">
+          <div class="icon icon-success">
+            <span class="material-icons"> attach_money </span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="category"><strong>Analyse médicale</strong></p>
+          <h3 class="card-title">23,100</h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">date_range</i> Weekly sales
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header">
+          <div class="icon icon-info">
+            <span class="material-icons"> follow_the_signs </span>
+          </div>
+        </div>
+        <div class="card-content">
+          <p class="category"><strong>Médicaments</strong></p>
+          <h3 class="card-title">+245</h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">update</i> Just Updated
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7 col-md-12">
+      <div class="card" style="min-height: 485px">
+        <div class="card-header card-header-text">
+          <h4 class="card-title">Mes consultations</h4>
+          <p class="category">la liste</p>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-primary">
+              <tr>
+                <th>Docteur</th>
+                <th>Pronostic</th>
+                <th>Diagnostic</th>
+                <th>Medicaments</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Version PDF</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for dossier in DossierMedicalPatient %}
+              <tr>
+                <td>{{ dossier.docteur.prenom }} {{ dossier.docteur.nom }}</td>
+                <td>{{dossier.pronostic}}</td>
+                <td>{{dossier.diagnostic}}</td>
+                <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
+                <td>{{dossier.date_creationDossierMedical}}</td>
+                <td></td>
+                <td><a href="{% url 'pdf' dossier.id %}">Voir en PDF</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-12">
+      <div class="card" style="min-height: 485px">
+        <div class="card-header card-header-text">
+          <h4 class="card-title">Mes prochains rendez-vous</h4>
+        </div>
+        <div class="card-content">
+          <div class="streamline">
+            {% for rv in RendezVousMedicalPatient %}
+            <div class="sl-item sl-primary">
+              <div class="sl-content">
+                <h3 class="">{{rv.date_RV}}</h3>
+                <div class="d-flex">
+                  <p class="pr-2">De {{rv.heureDebut }}</p>
+
+                  <p class="">à {{ rv.heureFin}}</p>
+                </div>
+                <p>Au Docteur {{rv.docteur.prenom}} {{rv.docteur.nom}}</p>
+
+                <p>{{rv.objectRV}}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <nav class="d-flex">
+            <ul class="m-0 p-0">
+              <li>
+                <a href="#"> Home </a>
+              </li>
+              <li>
+                <a href="#"> Company </a>
+              </li>
+              <li>
+                <a href="#"> Portfolio </a>
+              </li>
+              <li>
+                <a href="#"> Blog </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-6">
+          <p class="copyright d-flex justify-content-end">
+            &copy 2021 Design by
+            <a href="#">Vishweb Design</a> BootStrap Admin Dashboard
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+{% endblock content %}
+
+<script
+  src="https://kit.fontawesome.com/99b33c1940.js"
+  crossorigin="anonymous"
+></script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+  crossorigin="anonymous"
+></script>
