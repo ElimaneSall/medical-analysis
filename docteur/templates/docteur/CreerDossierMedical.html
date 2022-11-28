@@ -1,0 +1,83 @@
+{% extends 'docteur/baseDocteur.html' %} {% block content %}
+<button  class="btn btn-skin  btn-lg " style="margin:10px">
+    <a class="nav-link text-center" href="{% url 'VoirDossierMedicalMedecin' %}">Voir mes dossiers medicaux</a>
+</button>
+
+<form class="" method="get" action="{% url 'CreerDossierMedical' %}">
+  <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s"></div>
+  {% csrf_token %}
+  <div class="form-wrapper">
+    <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+      <div class="panel panel-skin">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">
+            Creer un dossier medical
+          </h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" class="lead">
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Matricule Patient</label>
+                  <input
+                    type="text"
+                    name="matriculePatient"
+                    id="matriculePatient"
+                    class="form-control input-md"
+                  />
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Pronostic</label>
+                  <input
+                    type="text"
+                    name="pronostic"
+                    id="pronostic"
+                    class="form-control input-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Diagnostic</label>
+                  <input
+                    type="text"
+                    name="diagnostic"
+                    id="diagnostic"
+                    class="form-control input-md"
+                  />
+                </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Medicaments</label>
+                  <input
+                    type="text"
+                    name="medicaments"
+                    id="medicaments"
+                    class="form-control input-md"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <input
+              type="submit"
+              value="Créer"
+              class="btn btn-skin btn-block btn-lg"
+            />
+
+            <p class="lead-footer">
+              * We'll contact you by phone & email later
+            </p>
+          </form>
+     
+      {% endblock %}
+</body>
+</html>
+

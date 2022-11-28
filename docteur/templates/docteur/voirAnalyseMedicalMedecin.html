@@ -1,0 +1,19 @@
+{% extends 'docteur/baseDocteur.html' %} {% block content %}
+<h1>Analyse medicale</h1>
+<h6>
+  Nom du medecin: {{ request.user }}
+</h6>
+    {% for analyse in AnalyseMedicalMedecin %}
+    {{ analyse.scanner.url }}
+    <div class="bg-light">
+      <p>Prenom et Nom du patient: {{ analyse.patient.prenom }} {{ dossier.patient.nom }}
+      <p>Scanner: {{analyse.scanner}}</p>
+      <p>But de l'analyse: {{analyse.butAnalyse}}</p>
+      <p>Resultat: {{analyse.resultat}}</p>
+      <p>Date: {{analyse.dateAnalyse}}</p>
+      <img src="{{ analyse.scanner.url }}" alt="{{ analyse.scanner }}" class="img-fluid" width="700" height="50" alt="...">
+
+    </div>
+    {% endfor %} {% endblock %}
+ 
+</h6>

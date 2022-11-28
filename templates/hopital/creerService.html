@@ -1,0 +1,70 @@
+{% extends 'hopital/baseHopital.html' %} {% block content %}
+<h6>Nom du patient: {{ request.user }}</h6>
+
+<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s"></div>
+
+<div class="form-wrapper">
+  <div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+    <div class="panel panel-skin">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Créer un service</h3>
+      </div>
+      <div class="panel-body">
+        <form class="lead" method="POST" action="{% url 'creerService' %}">
+          {% csrf_token %}
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label>Nom du service</label>
+                {{form.nomService}}
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label>Nom du chef de service</label>
+                {{form.chefService}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label>Nombre de lits</label>
+                {{form.nombreLit}}
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label>Nombre de lits occupés</label>
+                {{form.nombreLitOccupe}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label>Adresse du service</label>
+                {{form.adresse}}
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6" style="display: None">
+              <div class="form-group">
+                <label>Nombre de lits occupés</label>
+                {{form.hopital}}
+              </div>
+            </div>
+          </div>
+          <input
+            type="submit"
+            value="Submit"
+            class="btn btn-skin btn-block btn-lg"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
