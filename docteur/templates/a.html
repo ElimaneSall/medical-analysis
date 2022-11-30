@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Allo docteur</title>
+
+    <!-- css -->
+    <link
+      href="{% static 'medicio/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'medicio/font-awesome/css/font-awesome.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'medicio/plugins/cubeportfolio/css/cubeportfolio.min.css' %}"
+    />
+    <link
+      href="{% static 'medicio/css/nivo-lightbox.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'medicio/css/nivo-lightbox-theme/default/default.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="{% static 'medicio/css/owl.carousel.css' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="{% static 'medicio/css/owl.theme.css' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link href="{% static 'medicio/css/animate.css' %}" rel="stylesheet" />
+    <link href="{% static 'medicio/css/style.css' %}" rel="stylesheet" />
+
+    <!-- boxed bg -->
+    <link
+      id="bodybg"
+      href="{% static 'medicio/bodybg/bg1.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- template skin -->
+    <link
+      id="t-colors"
+      href="{% static 'medicio/color/default.css' %}"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'weblab/css/bootstrap.min.css' %}" />
+    <!----css3---->
+    <link rel="stylesheet" href="{% static 'weblab/css/custom.css' %}" />
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--google material icon-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <script>
+    body{
+      color:blue
+    }
+    <script>
+  <body>
+    <div class="background:blue">
+      <div style="display: flex; justify-content: center">
+        <h1>Hopital Fann</h1>
+        <p>Email: test@test.com</p>
+        <p>Telephone: 77 777 77 77</p>
+        <p>Adresse: Avenue Cheikh Anta Diop</p>
+      </div>
+      <img src="https://www.sante.gouv.sn/sites/default/files/hopkaff.jpg" />
+    </div>
+
+    <h1>Ordonnance</h1>
+    <div>
+      <div>
+        <h4>Patient</h4>
+        <p>{{dossier.docteur.nom}}</p>
+        <p>Poids: 70Kg</p>
+        <p>Age: 20 ans</p>
+      </div>
+      <div>
+        <h4>Docteur</h4>
+        <p>M. Mamadou Diop</p>
+      </div>
+    </div>
+    <div>
+      <h6>Ca 5000</h6>
+    </div>
+  </body>
+</html>
