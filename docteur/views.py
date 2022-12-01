@@ -13,6 +13,24 @@ from .models import AnalyseMedicale, DossierMedical, RendezVousMedical
 
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+
+#Importation de keras
+from django.shortcuts import render
+from django.http import JsonResponse
+import base64
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from django.conf import settings 
+from keras.models import load_model
+model = load_model('model.h5')
+#deuxieme importation
+from django.shortcuts import render 
+from django.core.files.storage import FileSystemStorage 
+from keras.models import load_model 
+from keras.preprocessing import image 
+from tensorflow.keras.utils import img_to_array, load_img 
+
+img_heigh, img_with = 150, 150 
 # Create your views here.
 
 def render_to_pdf(template_src, context_dict={}):
@@ -56,19 +74,21 @@ class GeneratePDF(View):
         return HttpResponse("Page not Found")
 def analyseMedicale(request):
     if request.method == 'POST':  
-        form = AnalyseMedicaleForm(request.POST, request.FILES)  
+        form = AnalyseMedicaleForm(request.POST, request.FILES, initial={'patient':request.POST.get("matriculePatient")})  
+        print(form.data)
         if form.is_valid():  
             form = form.save(commit=False)
-            #form.slug = str(request.user) + str(form.nom)
-            form.patient = Personne.objects.filter(matricule=request.POST.get('matricule'))[0] 
-            print(form)
+            form.patient = Personne.objects.filter(matricule=request.POST.get('matriculePatient'))[0] 
+            form.docteur = Personne.objects.filter(id=request.user.id)[0]
+           
             form.save()
             #handle_uploaded_file(request.FILES['file'])
             AnalyseMedicalMedecin = AnalyseMedicale.objects.filter(docteur=request.user).order_by('-id')       
             return render(request, 'docteur/voirAnalyseMedicalMedecin.html', context={'AnalyseMedicalMedecin': AnalyseMedicalMedecin})
      
             #return HttpResponse("File uploaded successfuly")  
-   
+        else:
+            return HttpResponse("Le formulaire n'est pas valide")
     form = AnalyseMedicaleForm()
     return render(request, 'docteur/analyseMedicale.html', {'form': form})
 
@@ -83,11 +103,6 @@ def dashboardMedecin(request):
     return render(request, 'docteur/dashboardMedecin.html',  {'RendezVousMedicalDocteur':RendezVousMedicalDocteur, 
                              'DossierMedicalMedecin':DossierMedicalMedecin,})
 
-def rendezvousMedecin(request):
-    RendezVousMedicalDocteur = RendezVousMedical.objects.filter(docteur=request.user).order_by('-id')
-    return render(request, 'docteur/rendezvousMedecin.html',{'RendezVousMedicalDocteur':RendezVousMedicalDocteur})
-
-   
 
 def CreerDossierMedical(request):
     if request.method == "GET":
@@ -97,18 +112,19 @@ def CreerDossierMedical(request):
             form.diagnostic = request.GET.get("diagnostic")
             form.medicaments = request.GET.get("medicaments")
             form.docteur = request.user
+            #form.qrCode = DossierMedical().saveQRcode()
             print("-"*20)
             print(Personne.objects.filter(matricule=request.GET.get('matriculePatient')) )
             print("*"*20)
-            form.patient = Personne.objects.filter(matricule=request.GET.get('matriculePatient'))[0] 
-       
+            if Personne.objects.filter(matricule=request.GET.get('matriculePatient')).exists():
+                form.patient = Personne.objects.filter(matricule=request.GET.get('matriculePatient'))[0] 
+            else:
+                return HttpResponse("Ce patient n'existe pas !")
             # print(form['name'].value() )
             print(form)
-            form.save()
-                # hotel, _ = Hotel.objects.get_or_create(user=request.user)
-                # hotel.chambres.add(form)
-                # hotel = Hotel.objects.filter(user=request.user)
-            return render(request, 'docteur/index.html')
+            form.saveQRcode()
+            DossierMedicalMedecin = DossierMedical.objects.filter(docteur=request.user).order_by('-id')
+            return render(request, 'docteur/index.html', {'DossierMedicalMedecin':DossierMedicalMedecin})
     
     form = DossierMedicalForm()
     return render(request, 'docteur/CreerDossierMedical.html', {'form': form})
@@ -150,3 +166,62 @@ def updateProfilDocteur(request):
             return HttpResponse("Le formulaire n'est pas valide ou ... Veuiller appeler les admin")
         
     return render(request, 'docteur/updateProfilDocteur.html', {'form':DocteurForm()})
+
+def creerRendezVousPourPatient(request):
+    if request.method == "GET":
+        if request.GET.get("heureDebut") and request.GET.get("heureFin") and request.GET.get("objectRV"):
+            form = RendezVousMedical()
+            form.heureDebut = request.GET.get("heureDebut")
+            form.heureFin = request.GET.get("heureFin")
+            form.objectRV = request.GET.get("objectRV")
+            form.docteur = request.user
+            form.typeRV = request.GET.get("typeRV")
+            form.dateRV = request.GET.get("dateRV")
+            print("-"*20)
+            print(Personne.objects.filter(matricule=request.GET.get('matriculePatient')) )
+            print("*"*20)
+            form.patient = Personne.objects.filter(matricule=request.GET.get('matriculePatient'))[0] 
+            form.save()
+            RendezVousMedicalDocteur = RendezVousMedical.objects.filter(docteur=request.user).order_by('-id')
+            return render(request, 'docteur/creerRendezVousPourPatient.html', {'RendezVousMedicalDocteur':RendezVousMedicalDocteur})
+    return render(request, 'docteur/creerRendezVousPourPatient.html')
+
+def rendezvousMedecin(request):
+    RendezVousMedicalDocteur = RendezVousMedical.objects.filter(docteur=request.user).order_by('-id')
+    return render(request, 'docteur/rendezvousMedecin.html',{'RendezVousMedicalDocteur':RendezVousMedicalDocteur})
+
+def IA(request):
+    model = load_model('PId_Best.h5') 
+labels = ['daisy','dandelion','rose', 'sunflower', 'tulip'] 
+img_heigh, img_with = 150, 150 
+
+""" ... 
+    def index(): 
+    You can download the entire code from this repository
+    ...
+""" 
+
+def IA(request):
+    context = {} 
+    if request.method == 'POST': 
+        
+        uploaded_file= request.FILES['img'] 
+        fs = FileSystemStorage() 
+        name = fs.save(uploaded_file.name, uploaded_file) 
+        context["url"] = fs.url(name) 
+        print(context["url"]) 
+        testimage = '.'+context["url"] 
+        img = load_img(testimage, target_size=(img_heigh, img_with)) 
+        
+        x = image.img_to_array(img) 
+        x = x/255 
+        x = x.reshape(1, img_heigh, img_with, 3) 
+        pred = model.predict(x) 
+        
+        import numpy as np 
+        #context['predictedClass'] = labels[np.argmax(pred[0])] 
+        context['probability'] = "{:.2f}".format(round(np.max(pred), 2)*100)
+        
+    return render(request,'docteur/ia.html',context)
+    
+   

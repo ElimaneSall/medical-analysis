@@ -12,13 +12,15 @@
         <div>
           <h4>Consultation du {{ dossier.date_creationDossierMedical}}</h4>
           <div class="d-flex justify-content-center">
+            {% if dossier.qrCode.url == None %}
             <img
               width="200px"
               height="200px"
-              src="{{ dossier.qrCode.url }}"
+              src="{{ dossier.qrCode }}"
               class="img-responsive"
               alt=""
             />
+            {% endif %}
           </div>
           <p class="pl-5">
             Présinscript par

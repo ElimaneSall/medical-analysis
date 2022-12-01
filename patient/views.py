@@ -36,15 +36,8 @@ def creerRendezVousPatient(request):
             print(Personne.objects.filter(matricule=request.GET.get('matriculeDocteur')) )
             print("*"*20)
             form.docteur = Personne.objects.filter(matricule=request.GET.get('matriculeDocteur'))[0] 
-       
-            # print(form['name'].value() )
-    
             form.save()
             RendezVousMedicalPatient = RendezVousMedical.objects.filter(patient=request.user).order_by('-id')
-
-                # hotel, _ = Hotel.objects.get_or_create(user=request.user)
-                # hotel.chambres.add(form)
-                # hotel = Hotel.objects.filter(user=request.user)
             return render(request, 'patient/rendezvousPatient.html', {'RendezVousMedicalPatient':RendezVousMedicalPatient})
     
 

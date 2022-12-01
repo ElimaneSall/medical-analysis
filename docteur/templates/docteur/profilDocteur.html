@@ -1,23 +1,24 @@
 {% extends 'docteur/baseDocteur.html' %} {% load static %} {% block content %}
-<h1>Update profil</h1>
 
 <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-  <div class="card p-4">
+  <div class="card p-4" style="display: flex; flex-direction: row">
+    <button class="btn btn-secondary">
+      <img src="{{ request.user.photoProfil.url }}" />
+    </button>
     <div
       class="image d-flex flex-column justify-content-center align-items-center"
+      style="margin-left: 50px"
     >
-      <button class="btn btn-secondary">
-        <img src="{{hopital.logo.url }}" height="100" width="100" />
-      </button>
-
       <h1 class="idd">{{ request.user.prenom}} {{ request.user.nom}}</h1>
       <h3 class="idd">
-        {{ request.user.special}} à
+        {{ request.user.special}}
         <h3 class="idd">{{ request.user.hopital.nomHopital}}</h3>
       </h3>
-      <h3 class="idd">{{ request.user.adresse}}</h3>
+      <h3 class="idd">{{ request.user.specialite}}</h3>
       <p class="idd">{{ request.user.email}}</p>
+      <p class="idd">Adresse:{{ request.user.adresse}}</p>
       <p class="idd">Matricule:{{ request.user.matricule}}</p>
+      <p class="idd">Bureau:{{ request.user.bureau}}</p>
 
       <div class="d-flex mt-2">
         <button class="btn btn-skin btn-lg">

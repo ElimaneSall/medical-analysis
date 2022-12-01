@@ -150,7 +150,6 @@
                     >Mes analyses medicales</a
                   >
                 </li>
-                <li><a href="{% url 'dashboardMedecin' %}">Dashboard</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Deconnecter</a></li>
                 {% else %}

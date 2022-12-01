@@ -10,8 +10,10 @@ urlpatterns = [
     path('rendezvousMedecin', views.rendezvousMedecin, name="rendezvousMedecin"),
     path("VoirDossierMedicalMedecin", views.VoirDossierMedicalMedecin, name="VoirDossierMedicalMedecin"),
     path("voirAnalyseMedicalMedecin",views.voirAnalyseMedicalMedecin , name="voirAnalyseMedicalMedecin"),
-   path("pdf/<str:id>/", GeneratePDF.as_view(), name="pdf"),
-   path("profilDocteur/", views.profilDocteur, name="profilDocteur"),
-   path("updateProfilDocteur/",views.updateProfilDocteur, name="updateProfilDocteur")
+    path("pdf/<str:id>/", GeneratePDF.as_view(), name="pdf"),
+    path("profilDocteur/", views.profilDocteur, name="profilDocteur"),
+    path("updateProfilDocteur/",views.updateProfilDocteur, name="updateProfilDocteur"),
+    path("creerRendezVousPourPatient/", views.creerRendezVousPourPatient, name="creerRendezVousPourPatient"),
+    path("IA/", views.IA, name="IA")
 
 ]

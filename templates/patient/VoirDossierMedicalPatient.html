@@ -1,18 +1,16 @@
 {% extends 'patient/basePatient.html' %} {% load static %} {% block content %}
-<h1>Dossier medical</h1>
-<h6>Nom du patient: {{ request.user }}</h6>
+
 <div class="row">
   <div class="col-lg-7 col-md-12">
     <div class="card" style="min-height: 485px">
       <div class="card-header card-header-text">
         <h4 class="card-title">Mes consultations</h4>
-        <p class="category">la liste</p>
       </div>
       <div class="card-content table-responsive">
         <table class="table table-hover">
           <thead class="text-primary">
             <tr>
-              <th>Patient</th>
+              <th>Docteur</th>
               <th>Pronostic</th>
               <th>Diagnostic</th>
               <th>Medicaments</th>

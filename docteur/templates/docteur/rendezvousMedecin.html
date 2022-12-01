@@ -1,7 +1,7 @@
 {% extends 'docteur/baseDocteur.html' %} {% load static %} {% block content %}
-<h1>RV medecin</h1>
+
 <button class="btn btn-skin btn-lg" style="margin: 10px">
-  <a class="nav-link text-center" href="{% url 'VoirDossierMedicalMedecin' %}"
+  <a class="nav-link text-center" href="{% url 'creerRendezVousPourPatient' %}"
     >Créer un rendez-vous pour un patient</a
   >
 </button>
@@ -11,7 +11,6 @@
     <div class="card" style="min-height: 485px">
       <div class="card-header card-header-text">
         <h4 class="card-title">Mes rendez-vous</h4>
-        <p class="category">la liste</p>
       </div>
       <div class="card-content table-responsive">
         <table class="table table-hover">
@@ -24,7 +23,7 @@
               <th>Statut</th>
               <th>Confirmer</th>
               <th>Modifier</th>
-              <th>Supprimer</th>
+              <th>annuler</th>
             </tr>
           </thead>
           <tbody>
@@ -45,6 +44,22 @@
               <td>{{rv.heureDebut}}</td>
               <td>{{rv.heureDebut}}</td>
               <td>{{ rv.objectRV}}</td>
+              <td style="min-width: 70px">{{ rv.statut}}</td>
+              <td>
+                <button class="btn" style="background: yellow">
+                  <a class="text-center" href="">Confirmer</a>
+                </button>
+              </td>
+              <td>
+                <button class="btn" style="background: gray">
+                  <a class="text-center" href="">Confirmer</a>
+                </button>
+              </td>
+              <td>
+                <button class="btn" style="background: red">
+                  <a class="text-center" href="">Annuler</a>
+                </button>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -59,12 +74,12 @@
         <h4 class="card-title">Statistiques des rendez-vous</h4>
       </div>
       <div class="card-content">
-        <p>total rv</p>
-        <p>total rv today</p>
-        <p>total rv annule today</p>
-        <p>total rv next week</p>
-        <p>moyen rv par jour</p>
-        <p>moyen rv par semaine</p>
+        <p>total rendez-vous</p>
+        <p>total rendez-vous aujourd'hui</p>
+        <p>total rendez-vous annule aujourd'hui</p>
+        <p>total rendez-vous semaine prochaine</p>
+        <p>moyen rendez-vous par jour</p>
+        <p>moyen rendez-vous par semaine</p>
       </div>
     </div>
   </div>
