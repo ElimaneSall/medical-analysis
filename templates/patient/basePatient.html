@@ -145,11 +145,7 @@
                   <a href="{% url 'ordonnancePatient' %}">Mes Ordonnances</a>
                 </li>
 
-                <li>
-                  <a href="{% url 'analyseMedicale' %}"
-                    >Mes analyses medicales</a
-                  >
-                </li>
+                
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Deconnecter</a></li>
                 {% else %}

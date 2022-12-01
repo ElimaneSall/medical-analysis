@@ -109,17 +109,6 @@
               >
                 <i class="fa fa-bars"></i>
               </button>
-              {% comment %}
-              <a class="navbar-brand" href="index.html">
-                <img
-                  src="{% static 'medicio/img/logo.png' %}"
-                  alt=""
-                  width="150"
-                  height="40"
-                />
-                Allo Docteur
-              </a>
-              {% endcomment %}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -142,11 +131,9 @@
                   <a href="{% url 'serviceHoiptal' %}"> Services</a>
                 </li>
                 <li>
-                  <a href="{% url 'ordonnancePatient' %}"
-                    >Disponibilité des lits</a
-                  >
+                  <a href="{% url 'indexHopital' %}">Disponibilité des lits</a>
                 </li>
-                <li><a href="{% url 'dashboardMedecin' %}">Dashboard</a></li>
+                <li><a href="{% url 'indexHopital' %}">Dashboard</a></li>
                 <li>
                   <a href="{% url 'profilHopital' %}"> Profil </a>
                 </li>
