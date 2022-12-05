@@ -31,7 +31,7 @@ model = load_model('model.h5')
 from django.shortcuts import render 
 from django.core.files.storage import FileSystemStorage 
 from keras.models import load_model 
-from keras.applications.vgg16 import preprocess_input
+
 from tensorflow.keras.utils import img_to_array, load_img 
 
 # Create your views here.
@@ -197,18 +197,18 @@ def rendezvousMedecin(request):
 def IA(request):
     if  request.method == "POST":
         f=request.FILES['img'] # here you get the files needed
+        response = {}
+        
+        from tensorflow.keras.utils import img_to_array, load_img 
+        from keras.applications.vgg16 import preprocess_input
+        from keras.applications.vgg16 import decode_predictions
+        from keras.applications.vgg16 import VGG16
         # load the model
-        model = load_model('model.h5') 
-        file_name = "predict.jpg"
-        file_name_2 = default_storage.save(file_name, f)
-        file_url = default_storage.url(file_name_2)
+        model = VGG16()
         # load an image from file
-        image = load_img('.'+file_url, target_size=(150, 150))
+        image = load_img('C:/Users/Sall/Desktop/PAS/pas/challengePas/media/cheval.jpg', target_size=(224, 224))
         # convert the image pixels to a numpy array
         image = img_to_array(image)
-        
-        
-        #image = img_to_array(image)
         # reshape data for the model
         image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
         # prepare the image for the VGG model
@@ -216,12 +216,12 @@ def IA(request):
         # predict the probability across all output classes
         yhat = model.predict(image)
         # convert the probabilities to class labels
-        #label = decode_predictions(yhat)
+        label = decode_predictions(yhat)
         # retrieve the most likely result, e.g. highest probability
-        #label = label[0][0]
+        label = label[0][0]
         # print the classification
-        #print('%s (%.2f%%)' % (label[1], label[2]*100))
-        return render(request,'docteur/ia.html',{'nom':yhat,'image':image})
+        print('%s (%.2f%%)' % (label[1], label[2]*100))
+        return render(request,'docteur/ia.html',{'nom':label[1], 'score':label[2]*100})
     return render(request,'docteur/ia.html')
     
    

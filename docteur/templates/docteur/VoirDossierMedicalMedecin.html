@@ -1,12 +1,10 @@
 {% extends 'docteur/baseDocteur.html' %} {% load static %} {% block content %}
-<h1>Dossier medical</h1>
-<h6>Nom du medecin: {{ request.user }}</h6>
+
 <div class="row">
   <div class="col-lg-7 col-md-12">
     <div class="card" style="min-height: 485px">
       <div class="card-header card-header-text">
         <h4 class="card-title">Mes consultations</h4>
-        <p class="category">la liste</p>
       </div>
       <div class="card-content table-responsive">
         <table class="table table-hover">
@@ -40,6 +38,7 @@
               <td>{{dossier.diagnostic}}</td>
               <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
               <td>{{dossier.date_creationDossierMedical}}</td>
+              <td>{{dossier.statut}}</td>
               <td>
                 <a href="{% url 'pdf' dossier.id %}">Voir en PDF</a>
               </td>

@@ -151,22 +151,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# def get_session():
-#     config = tf.ConfigProto()
-#     config.gpu_options.allow_growth = True
-#     return tf.Session(config=config)
-
-# K.tensorflow_backend.set_session(get_session())
-
-# config = tf.ConfigProto()
-# config.gpu_options.allow_growth = True
-# SESS = tf.Session(config=config)
-# print("model loading")
-# GRAPH1 = tf.get_default_graph()
-
-# set_session(SESS)
-# # Load the VGG model
-# VGG_MODEL = vgg16.VGG16(weights="imagenet")
 import keras
 import numpy as np
 from keras import backend as K
@@ -175,19 +159,19 @@ from tensorflow.python.keras.backend import set_session
 from keras.applications import vgg16
 
 
-# def get_session():
-#     config = tf.compat.v1.ConfigProto()
-#     config.gpu_options.allow_growth = True
-#     return tf.compat.v1.Session(config=config)
+def get_session():
+    config = tf.compat.v1.ConfigProto()
+    config.gpu_options.allow_growth = True
+    return tf.compat.v1.Session(config=config)
 
-# K.set_session(get_session())
+K.set_session(get_session())
 
-# config = tf.compat.v1.ConfigProto()
-# config.gpu_options.allow_growth = True
-# SESS = tf.compat.v1.Session(config=config)
-# print("model loading")
-# GRAPH1 = tf.compat.v1.get_default_graph()
+config = tf.compat.v1.ConfigProto()
+config.gpu_options.allow_growth = True
+SESS = tf.compat.v1.Session(config=config)
+print("model loading")
+#GRAPH1 = tf.compat.v1.get_default_graph()
 
-# set_session(SESS)
+set_session(SESS)
 # # Load the VGG model
-# VGG_MODEL = vgg16.VGG16(weights="imagenet")
+#VGG_MODEL = vgg16.VGG16(weights="imagenet")
