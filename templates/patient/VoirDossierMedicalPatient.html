@@ -38,6 +38,8 @@
               <td>{{dossier.diagnostic}}</td>
               <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
               <td>{{dossier.date_creationDossierMedical}}</td>
+              <td>{{dossier.statut}}</td>
+              <td><a href="{% url 'pdf' dossier.id %}">Voir en PDF</a></td>
             </tr>
             {% endfor %}
           </tbody>

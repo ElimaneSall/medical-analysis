@@ -1,6 +1,5 @@
 {% extends 'patient/basePatient.html' %} {% load static %} {% block content %}
-<h1>Medicaments</h1>
-<h6>Nom du patient: {{ request.user }}</h6>
+
 <div class="row mr-0 ml-0" style="justify-content: center">
   <div class="col-lg-10 col-md-12">
     <div class="card" style="min-height: 485px">
@@ -12,15 +11,15 @@
         <div>
           <h4>Consultation du {{ dossier.date_creationDossierMedical}}</h4>
           <div class="d-flex justify-content-center">
-            {% if dossier.qrCode.url == None %}
+            <p></p>
+
             <img
               width="200px"
               height="200px"
-              src="{{ dossier.qrCode }}"
+               src="{% static 'assets/img/qrcode.png' %}"
               class="img-responsive"
               alt=""
             />
-            {% endif %}
           </div>
           <p class="pl-5">
             Présinscript par

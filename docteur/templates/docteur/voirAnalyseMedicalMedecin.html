@@ -1,19 +1,27 @@
 {% extends 'docteur/baseDocteur.html' %} {% block content %}
-<h1>Analyse medicale</h1>
-<h6>
-  Nom du medecin: {{ request.user }}
-</h6>
-    {% for analyse in AnalyseMedicalMedecin %}
-    {{ analyse.scanner.url }}
-    <div class="bg-light">
-      <p>Prenom et Nom du patient: {{ analyse.patient.prenom }} {{ dossier.patient.nom }}
-      <p>Scanner: {{analyse.scanner}}</p>
-      <p>But de l'analyse: {{analyse.butAnalyse}}</p>
-      <p>Resultat: {{analyse.resultat}}</p>
-      <p>Date: {{analyse.dateAnalyse}}</p>
-      <img src="{{ analyse.scanner.url }}" alt="{{ analyse.scanner }}" class="img-fluid" width="700" height="50" alt="...">
 
+<div class="container mb-4 p-3 justify-content-center">
+     {% for analyse in AnalyseMedicalMedecin %}
+  <div class="card p-4" style="display: flex; flex-direction: row">
+    <button class="btn btn-secondary">
+     <img src="{{ analyse.scanner.url }}" alt="{{ analyse.scanner }}" class="img-fluid" width="700" height="50" alt="...">
+    </button>
+    <div
+      class="image d-flex flex-column justify-content-center align-items-center"
+      style="margin-left: 50px"
+    >
+      <h1 class="idd">{{ analyse.patient.prenom }} {{ analyse.patient.nom }}</h1>
+        <p> {{analyse.butAnalyse}}</p>
+      <h3 class="idd">{{analyse.dateAnalyse}}</h3>
+      <div class="d-flex mt-2">
+        <button class="btn btn-skin btn-lg">
+            {{ analyse.resultat}}
+        </button>
+      </div>
     </div>
-    {% endfor %} {% endblock %}
- 
-</h6>
+  </div>
+     {% endfor %}
+</div>
+
+{% endblock %}
+

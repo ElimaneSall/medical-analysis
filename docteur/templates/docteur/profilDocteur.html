@@ -13,11 +13,12 @@
       <h3 class="idd">
         {{ request.user.special}}
         <h3 class="idd">{{ request.user.hopital.nomHopital}}</h3>
+        <p>Matricule hopital: {{ request.user.hopital.id}}</p>
       </h3>
       <h3 class="idd">{{ request.user.specialite}}</h3>
       <p class="idd">{{ request.user.email}}</p>
       <p class="idd">Adresse:{{ request.user.adresse}}</p>
-      <p class="idd">Matricule:{{ request.user.matricule}}</p>
+      <h3 class="idd">Votre matricule:{{ request.user.matricule}}</h3>
       <p class="idd">Bureau:{{ request.user.bureau}}</p>
 
       <div class="d-flex mt-2">

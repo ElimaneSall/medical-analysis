@@ -1,10 +1,12 @@
 from io import BytesIO
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
+import numpy as np
 from django.views.generic import View
 from account.DocteurForm import DocteurForm
 
 from account.models import Personne
+from hopital.models import Hopital
 from .formAnalyseMedicale import AnalyseMedicaleForm
 
 from .formDossierMedical import DossierMedicalForm
@@ -14,23 +16,24 @@ from .models import AnalyseMedicale, DossierMedical, RendezVousMedical
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
-#Importation de keras
-from django.shortcuts import render
-from django.http import JsonResponse
-import base64
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from django.conf import settings 
-from keras.models import load_model
-model = load_model('model.h5')
-#deuxieme importation
-from django.shortcuts import render 
-from django.core.files.storage import FileSystemStorage 
-from keras.models import load_model 
-from keras.preprocessing import image 
-from tensorflow.keras.utils import img_to_array, load_img 
 
-img_heigh, img_with = 150, 150 
+# #Importation de keras
+# from django.shortcuts import render
+# from django.http import JsonResponse
+# import base64
+# from django.core.files.base import ContentFile
+# from django.core.files.storage import default_storage
+# from django.conf import settings
+# from keras.models import load_model
+# model = load_model('model.h5')
+# #deuxieme importation
+# from django.shortcuts import render
+# from django.core.files.storage import FileSystemStorage
+# from keras.models import load_model
+# from keras.preprocessing import image
+# from tensorflow.keras.utils import img_to_array, load_img
+#
+# img_heigh, img_with = 150, 150
 # Create your views here.
 
 def render_to_pdf(template_src, context_dict={}):
@@ -54,17 +57,25 @@ def index(request):
 
 class GeneratePDF(View):
     def get(self, request, id,  *args, **kwargs):
-        data = {
-             'nom':'Elimane',
-             'id':12,
-         }
+
         print("*"*20)
         print(request)
         print(id)
-        dossier = get_object_or_404(DossierMedical, id=id)
-       
-        print("-"*40)
-        pdf = render_to_pdf("a.html", data)
+        dossier = DossierMedical.objects.filter(id=id).values_list()
+        print(dossier)
+
+        def Convert(lst, name):
+            res_dct = {name: lst[i] for i in range(0, len(lst), 1)}
+            return res_dct
+        dossierDict = Convert(dossier, "dossier")
+        docteur = Personne.objects.filter(id=dossierDict["dossier"][5]).values_list()
+        patient = Personne.objects.filter(id=dossierDict["dossier"][6]).values_list()
+        docteurDict = Convert(docteur, "docteur")
+        patientDict = Convert(patient, "patient")
+        dataDict = {**docteurDict,**dossierDict, **patientDict }
+        print("dossier-"*40)
+        print(dataDict)
+        pdf = render_to_pdf("a.html", dataDict)
         if pdf:
             response = HttpResponse(pdf, content_type="application/pdf")
             filename = "pdf_%s.pdf" %("ordonnance")
@@ -75,12 +86,15 @@ class GeneratePDF(View):
 def analyseMedicale(request):
     if request.method == 'POST':  
         form = AnalyseMedicaleForm(request.POST, request.FILES, initial={'patient':request.POST.get("matriculePatient")})  
+
         print(form.data)
         if form.is_valid():  
             form = form.save(commit=False)
             form.patient = Personne.objects.filter(matricule=request.POST.get('matriculePatient'))[0] 
             form.docteur = Personne.objects.filter(id=request.user.id)[0]
-           
+            if(np.random.randn()>0):
+                form.resultat = "Cancer du poumou"
+            form.resultat = "Pas de cancer"
             form.save()
             #handle_uploaded_file(request.FILES['file'])
             AnalyseMedicalMedecin = AnalyseMedicale.objects.filter(docteur=request.user).order_by('-id')       
@@ -124,7 +138,7 @@ def CreerDossierMedical(request):
             print(form)
             form.saveQRcode()
             DossierMedicalMedecin = DossierMedical.objects.filter(docteur=request.user).order_by('-id')
-            return render(request, 'docteur/index.html', {'DossierMedicalMedecin':DossierMedicalMedecin})
+            return render(request, 'docteur/VoirDossierMedicalMedecin.html', {'DossierMedicalMedecin':DossierMedicalMedecin})
     
     form = DossierMedicalForm()
     return render(request, 'docteur/CreerDossierMedical.html', {'form': form})
@@ -151,8 +165,10 @@ def updateProfilDocteur(request):
             user.nom = form.data['nom']
             user.telephone = form.data['telephone']
             user.adresse = form.data['adresse']
+            user.bureau = form.data['bureau']
+            user.email = form.data['email']
             user.NumeroService = form.data['NumeroService']
-            user.NumeroHopital = form.data['NumeroHopital']
+            user.hopital =  Hopital.objects.filter(id=form.data['hopital']).get()
             print("user-"*20)
             print(user.prenom)
             user.save()
@@ -223,5 +239,28 @@ def IA(request):
         context['probability'] = "{:.2f}".format(round(np.max(pred), 2)*100)
         
     return render(request,'docteur/ia.html',context)
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+def samaPDF(request):
+    # Create a file-like buffer to receive PDF data.
+    buffer = io.BytesIO()
+
+    # Create the PDF object, using the buffer as its "file."
+    p = canvas.Canvas(buffer)
+
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.drawString(1, 10, "Hello world.")
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return  render(request, "a.html")
+    #return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
     
    

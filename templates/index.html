@@ -1,995 +1,898 @@
-
-{% extends 'base.html' %}
-{% load static %}
-{% block content %} 
-  <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-    
-
-      <!-- Section: intro -->
-      <section id="intro" class="intro">
-        <div class="intro-content">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-                <div
-                  class="wow fadeInDown"
-                  data-wow-offset="0"
-                  data-wow-delay="0.1s"
-                >
-                  <h2 class="h-ultra">Allo Docteur</h2>
-                </div>
-                <div
-                  class="wow fadeInUp"
-                  data-wow-offset="0"
-                  data-wow-delay="0.1s"
-                >
-                  <h4 class="h-light">
-                    La santé pour
-                    <span class="color">tous !</span>
-                  </h4>
-                </div>
-                <div class="well well-trans">
-                  <div class="wow fadeInRight" data-wow-delay="0.1s">
-                    <ul class="lead-list">
-                      <li>
-                        <span class="fa fa-check fa-2x icon-success"></span>
-                        <span class="list"
-                          ><strong
-                            >Une plateforme qui regroupe tous les acteurs de la
-                            santé. </strong
-                          ><br />
-                          Elle permet aux hopitaux de gérer les patients, les
-                          patients pourront suivrent leur état de santé
-                        </span>
-                      </li>
-                      <li>
-                        <span class="fa fa-check fa-2x icon-success"></span>
-                        <span class="list"
-                          ><strong>Un système de santé efficace</strong
-                          ><br />Grace à ce site, les hopitaux pourront voir les
-                          lits des hopitaux libres</span
-                        >
-                      </li>
-                      <li>
-                        <span class="fa fa-check fa-2x icon-success"></span>
-                        <span class="list"
-                          ><strong>Numeriser le secteur de la santé</strong
-                          ><br />A l'aide de ce site, les acteurs de la santé
-                          travailleront sur des supports numeriques laissant
-                          derrière le papier</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-1">
-                <a  href="{% url 'login_user' %}" class="btn btn-skin btn-sm"
-                  >Se connecter</a
-                >
-                <a  style="margin-top:15px" href="{% url 'signup' %}" class="btn btn-skin btn-sm"
-                  >S'inscrire</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- /Section: intro -->
-
-      <!-- Section: boxes -->
-      <section id="boxes" class="home-section paddingtop-80">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="box text-center">
-                  <i class="fa fa-check fa-3x circled bg-skin"></i>
-                  <h4 class="h-bold">Rendez-vous médical</h4>
-                  <p>
-                    La plateforme offre au patient la possibilité de prendre des
-                    rendez-vous au près des docteurs. Mais aussi, les docteurs
-                    pourront gérer facilement leur rendez-vous médicaaux.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="box text-center">
-                  <i class="fa fa-list-alt fa-3x circled bg-skin"></i>
-                  <h4 class="h-bold">Consultation</h4>
-                  <p>
-                    Il est très difficiles de savoir manager les consultations
-                    des patients. Sur ce, le site permet aux docteurs de
-                    numériser les consultations des patients. Les patients
-                    aussi, pourront voir les consultations précédentes mais
-                    également d'avoir un suivi médical
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="box text-center">
-                  <i class="fa fa-user-md fa-3x circled bg-skin"></i>
-                  <h4 class="h-bold">Hospitalisation</h4>
-                  <p>
-                    C'est un réel de savoir les lits d'hospitalisation
-                    disponible. Avec ce site, les hopitaux pourront voir les
-                    lits disponibles afin de répartir les patients pour éviter
-                    une situation de saturations des hopitaux et avoir une bonne
-                    répartition des patients.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <div class="box text-center">
-                  <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
-                  <h4 class="h-bold">Analyse médical</h4>
-                  <p>
-                    Faire une analyse est longue marche. Grace à l'IA, le
-                    docteur peut avoir un apercu du résulat avec une certitude
-                    de 80%.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Section: boxes -->
-
-      <section id="callaction" class="home-section paddingtop-40">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="callaction bg-gray"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <h2 class="h-bold text-center">Services</h2>
-      <!-- Section: services -->
-      <section id="service" class="home-section nopadding paddingtop-60">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-md-6">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                <img
-                  src="{% static 'medicio/img/dummy/img-1.jpg' %}"
-                  class="img-responsive"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInRight" data-wow-delay="0.1s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-stethoscope fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Cardiologie</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wow fadeInRight" data-wow-delay="0.2s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-wheelchair fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Dermentologie</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-              <div class="wow fadeInRight" data-wow-delay="0.3s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-plus-square fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Medecine generale</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 col-md-3">
-              <div class="wow fadeInRight" data-wow-delay="0.1s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-h-square fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Genocologie</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wow fadeInRight" data-wow-delay="0.2s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-filter fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Dentiste</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-              <div class="wow fadeInRight" data-wow-delay="0.3s">
-                <div class="service-box">
-                  <div class="service-icon">
-                    <span class="fa fa-user-md fa-3x"></span>
-                  </div>
-                  <div class="service-desc">
-                    <h5 class="h-light">Neurologie</h5>
-                    <p>a completer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Section: services -->
-
-     <!-- Section: team -->
-    <section id="doctor" class="home-section bg-gray paddingbot-60">
-      <div class="container marginbot-50">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="wow fadeInDown" data-wow-delay="0.1s">
-            <div class="section-heading text-center">
-            <h2 class="h-bold">Doctors</h2>
-            <p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
-            </div>
-            </div>
-            <div class="divider-short"></div>
-          </div>
-        </div>
-      </div>
-      
+{% extends 'base.html' %} {% load static %} {% block content %}
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+  <!-- Section: intro -->
+  <section id="intro" class="intro">
+    <div class="intro-content">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-          
-              <div id="filters-container" class="cbp-l-filters-alignLeft">
-                  <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All (<div class="cbp-filter-counter"></div>)</div>
-                  <div data-filter=".cardiologist" class="cbp-filter-item">Cardiologist (<div class="cbp-filter-counter"></div>)</div>
-                  <div data-filter=".psychiatrist" class="cbp-filter-item">Psychiatrist (<div class="cbp-filter-counter"></div>)</div>
-                  <div data-filter=".neurologist" class="cbp-filter-item">Neurologist (<div class="cbp-filter-counter"></div>)</div>
+          <div class="col-lg-6">
+            <div
+              class="wow fadeInDown"
+              data-wow-offset="0"
+              data-wow-delay="0.1s"
+            >
+              <h2 class="h-ultra">Allo Docteur</h2>
+            </div>
+            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+              <h4 class="h-light">
+                La santé pour
+                <span class="color">tous !</span>
+              </h4>
+            </div>
+            <div class="well well-trans">
+              <div class="wow fadeInRight" data-wow-delay="0.1s">
+                <ul class="lead-list">
+                  <li>
+                    <span class="fa fa-check fa-2x icon-success"></span>
+                    <span class="list"
+                      ><strong
+                        >Une plateforme qui regroupe tous les acteurs de la
+                        santé. </strong
+                      ><br />
+                      Elle permet aux hopitaux de gérer les patients, les
+                      patients pourront suivrent leur état de santé
+                    </span>
+                  </li>
+                  <li>
+                    <span class="fa fa-check fa-2x icon-success"></span>
+                    <span class="list"
+                      ><strong>Un système de santé efficace</strong><br />Grace
+                      à ce site, les hopitaux pourront voir les lits des
+                      hopitaux libres</span
+                    >
+                  </li>
+                  <li>
+                    <span class="fa fa-check fa-2x icon-success"></span>
+                    <span class="list"
+                      ><strong>Numeriser le secteur de la santé</strong><br />A
+                      l'aide de ce site, les acteurs de la santé travailleront
+                      sur des supports numeriques laissant derrière le
+                      papier</span
+                    >
+                  </li>
+                </ul>
               </div>
-      
-              <div id="grid-container" class="cbp-l-grid-team">
-                  <ul>
-                      <li class="cbp-item psychiatrist">
-                          <a href="doctors/member1.html" class="cbp-caption cbp-singlePage">
-                              <div class="cbp-caption-defaultWrap">
-                                  <img src="{% static 'medicio/img/team/1.jpg' %}" alt="" width="100%">
-                              </div>
-                              <div class="cbp-caption-activeWrap">
-                                  <div class="cbp-l-caption-alignCenter">
-                                      <div class="cbp-l-caption-body">
-                                          <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </a>
-                          <a href="doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">Alice Grue</a>
-                          <div class="cbp-l-grid-team-position">Psychiatrist</div>
-                      </li>
-                      <li class="cbp-item cardiologist">
-                          <a href="doctors/member2.html" class="cbp-caption cbp-singlePage">
-                              <div class="cbp-caption-defaultWrap">
-                                  <img src="img/team/2.jpg" alt="" width="100%">
-                              </div>
-                              <div class="cbp-caption-activeWrap">
-                                  <div class="cbp-l-caption-alignCenter">
-                                      <div class="cbp-l-caption-body">
-                                          <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </a>
-                          <a href="doctors/member2.html" class="cbp-singlePage cbp-l-grid-team-name">Joseph Murphy</a>
-                          <div class="cbp-l-grid-team-position">Cardiologist</div>
-                      </li>
-                      <li class="cbp-item cardiologist">
-                          <a href="doctors/member3.html" class="cbp-caption cbp-singlePage">
-                              <div class="cbp-caption-defaultWrap">
-                                  <img src="img/team/3.jpg" alt="" width="100%">
-                              </div>
-                              <div class="cbp-caption-activeWrap">
-                                  <div class="cbp-l-caption-alignCenter">
-                                      <div class="cbp-l-caption-body">
-                                          <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </a>
-                          <a href="doctors/member3.html" class="cbp-singlePage cbp-l-grid-team-name">Alison Davis</a>
-                          <div class="cbp-l-grid-team-position">Cardiologist</div>
-                      </li>
-                      <li class="cbp-item neurologist">
-                          <a href="doctors/member4.html" class="cbp-caption cbp-singlePage">
-                              <div class="cbp-caption-defaultWrap">
-                                  <img src="img/team/4.jpg" alt="" width="100%">
-                              </div>
-                              <div class="cbp-caption-activeWrap">
-                                  <div class="cbp-l-caption-alignCenter">
-                                      <div class="cbp-l-caption-body">
-                                          <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </a>
-                          <a href="doctors/member4.html" class="cbp-singlePage cbp-l-grid-team-name">Adam Taylor</a>
-                          <div class="cbp-l-grid-team-position">Neurologist</div>
-                      </li>
-  
-                  </ul>
-              </div>
-        </div>
+            </div>
+          </div>
+          <div class="col-lg-1">
+            <a href="{% url 'login_user' %}" class="btn btn-skin btn-sm"
+              >Se connecter</a
+            >
+            <a
+              style="margin-top: 15px"
+              href="{% url 'signup' %}"
+              class="btn btn-skin btn-sm"
+              >S'inscrire</a
+            >
+          </div>
         </div>
       </div>
-  
-    </section>
-    <!-- /Section: team -->
-
-      <!-- Section: works -->
-      <section id="facilities" class="home-section paddingbot-60">
-        <div class="container marginbot-50">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="section-heading text-center">
-                  <h2 class="h-bold">Medecins de la semaine</h2>
-                  <p>
-                    Voici les medecins qui ont fait des preuves cette semaines
-                  </p>
-                </div>
-              </div>
-              <div class="divider-short"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-              <div class="wow bounceInUp" data-wow-delay="0.2s">
-                <div id="owl-works" class="owl-carousel">
-                  <div class="item">
-                    <a
-                      href="{% static 'medicio/img/photo/1.jpg' %}"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="{% static 'medicio/img/works/1@2x.jpg' %}"
-                      ><img
-                        src="{% static 'medicio/img/photo/1.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                  <div class="item">
-                    <a
-                      href="img/photo/2.jpg"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="img/works/2@2x.jpg"
-                      ><img
-                        src="{% static 'medicio/img/photo/2.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                  <div class="item">
-                    <a
-                      href="img/photo/3.jpg"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="img/works/3@2x.jpg"
-                      ><img
-                        src="{% static 'medicio/img/photo/3.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                  <div class="item">
-                    <a
-                      href="img/photo/4.jpg"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="img/works/4@2x.jpg"
-                      ><img
-                        src="{% static 'medicio/img/photo/4.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                  <div class="item">
-                    <a
-                      href="img/photo/5.jpg"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="img/works/5@2x.jpg"
-                      ><img
-                        src="{% static 'medicio/img/photo/5.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                  <div class="item">
-                    <a
-                      href="img/photo/6.jpg"
-                      title="This is an image title"
-                      data-lightbox-gallery="gallery1"
-                      data-lightbox-hidpi="img/works/6@2x.jpg"
-                      ><img
-                        src="{% static 'medicio/img/photo/6.jpg' %}"
-                        class="img-responsive"
-                        alt="img"
-                    /></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Section: works -->
-
-      <!-- Section: testimonial -->
-      <section
-        id="testimonial"
-        class="home-section paddingbot-60 parallax"
-        data-stellar-background-ratio="0.5"
-      >
-        <div class="carousel-reviews broun-block">
-          <div class="container">
-            <div class="row">
-              <div
-                id="carousel-reviews"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Emergency Contraception</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="{% static 'medicio/img/testimonials/1.jpg' %}"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Anna</a>
-                        <span>Chicago, Illinois</span>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 hidden-xs">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Orthopedic Surgery</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="{% static 'medicio/img/testimonials/2.jpg' %}"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Matthew G</a>
-                        <span>San Antonio, Texas</span>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Medical consultation</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="{% static 'medicio/img/testimonials/3.jpg' %}"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Scarlet Smith</a>
-                        <span>Dallas, Texas</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Birth control pills</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="img/testimonials/4.jpg"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Lucas Thompson</a>
-                        <span>Austin, Texas</span>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 hidden-xs">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Radiology</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star-empty"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="img/testimonials/5.jpg"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Ella Mentree</a>
-                        <span>Fort Worth, Texas</span>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
-                      <div class="block-text rel zmin">
-                        <a title="" href="#">Cervical Lesions</a>
-                        <div class="mark">
-                          My rating:
-                          <span class="rating-input"
-                            ><span
-                              data-value="0"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="1"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="2"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="3"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="4"
-                              class="glyphicon glyphicon-star"
-                            ></span
-                            ><span
-                              data-value="5"
-                              class="glyphicon glyphicon-star"
-                            ></span>
-                          </span>
-                        </div>
-                        <p>
-                          Ne eam errem semper. Laudem detracto phaedrum cu vim,
-                          pri cu errem fierent fabellas. Quis magna in ius, pro
-                          vidit nonumy te, nostrud ...
-                        </p>
-                        <ins
-                          class="ab zmin sprite sprite-i-triangle block"
-                        ></ins>
-                      </div>
-                      <div class="person-text rel text-light">
-                        <img
-                          src="img/testimonials/6.jpg"
-                          alt=""
-                          class="person img-circle"
-                        />
-                        <a title="" href="#">Suzanne Adam</a>
-                        <span>Detroit, Michigan</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <a
-                  class="left carousel-control"
-                  href="#carousel-reviews"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a
-                  class="right carousel-control"
-                  href="#carousel-reviews"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Section: testimonial -->
-
-      <section id="partner" class="home-section paddingbot-60">
-        <div class="container marginbot-50">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-              <div class="wow lightSpeedIn" data-wow-delay="0.1s">
-                <div class="section-heading text-center">
-                  <h2 class="h-bold">Nos partenaires</h2>
-                  <p>Merci à la confiance</p>
-                </div>
-              </div>
-              <div class="divider-short"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-md-3">
-              <div class="partner">
-                <a href="#"
-                  ><img
-                    src="{% static 'medicio/img/dummy/partner-1.jpg' %}"
-                    alt=""
-                /></a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="partner">
-                <a href="#"
-                  ><img
-                    src="{% static 'medicio/img/dummy/partner-2.jpg' %}"
-                    alt=""
-                /></a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="partner">
-                <a href="#"
-                  ><img
-                    src="{% static 'medicio/img/dummy/partner-3.jpg' %}"
-                    alt=""
-                /></a>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="partner">
-                <a href="#"
-                  ><img
-                    src="{% static 'medicio/img/dummy/partner-4.jpg' %}"
-                    alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-md-4">
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="widget">
-                  <h5>A propos de Allo Docteur</h5>
-                  <p>La santé pour tous</p>
-                </div>
-              </div>
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="widget">
-                  <h5>Information</h5>
-                  <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Laboratory</a></li>
-                    <li><a href="#">Medical treatment</a></li>
-                    <li><a href="#">Terms & conditions</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="widget">
-                  <h5>medicio center</h5>
-                  <p>
-                    Nam leo lorem, tincidunt id risus ut, ornare tincidunt
-                    naqunc sit amet.
-                  </p>
-                  <ul>
-                    <li>
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
-                      </span>
-                      Monday - Saturday, 8am to 10pm
-                    </li>
-                    <li>
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
-                      </span>
-                      +62 0888 904 711
-                    </li>
-                    <li>
-                      <span class="fa-stack fa-lg">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-                      </span>
-                      hello@medicio.com
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="widget">
-                  <h5>Our location</h5>
-                  <p>
-                    The Suithouse V303, Kuningan City, Jakarta Indonesia 12940
-                  </p>
-                </div>
-              </div>
-              <div class="wow fadeInDown" data-wow-delay="0.1s">
-                <div class="widget">
-                  <h5>Follow us</h5>
-                  <ul class="company-social">
-                    <li class="social-facebook">
-                      <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li class="social-twitter">
-                      <a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li class="social-google">
-                      <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                    <li class="social-vimeo">
-                      <a href="#"><i class="fa fa-vimeo-square"></i></a>
-                    </li>
-                    <li class="social-dribble">
-                      <a href="#"><i class="fa fa-dribbble"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="sub-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="wow fadeInLeft" data-wow-delay="0.1s">
-                  <div class="text-left">
-                    <p>&copy;Copyright 2015 - medicio. All rights reserved.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="wow fadeInRight" data-wow-delay="0.1s">
-                  <div class="text-right">
-                    <p>
-                      <a href="http://bootstraptaste.com/">Bootstrap Themes</a>
-                      by BootstrapTaste
-                    </p>
-                  </div>
-                  <!-- 
-                        All links in the footer should remain intact. 
-                        Licenseing information is available at: http://bootstraptaste.com/license/
-                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=medicio
-                    -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
-    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+  </section>
 
-    <!-- Core JavaScript Files -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery.scrollTo.js"></script>
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/stellar.js"></script>
-    <script src="plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/nivo-lightbox.min.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
-  {% endblock %}
-</html>
+  <!-- /Section: intro -->
+
+  <!-- Section: boxes -->
+  <section id="boxes" class="home-section paddingtop-80">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="box text-center">
+              <i class="fa fa-check fa-3x circled bg-skin"></i>
+              <h4 class="h-bold">Rendez-vous médical</h4>
+              <p>
+                La plateforme offre au patient la possibilité de prendre des
+                rendez-vous au près des docteurs. Mais aussi, les docteurs
+                pourront gérer facilement leur rendez-vous médicaaux.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="box text-center">
+              <i class="fa fa-list-alt fa-3x circled bg-skin"></i>
+              <h4 class="h-bold">Consultation</h4>
+              <p>
+                Il est très difficiles de savoir manager les consultations des
+                patients. Sur ce, le site permet aux docteurs de numériser les
+                consultations des patients. Les patients aussi, pourront voir
+                les consultations précédentes mais également d'avoir un suivi
+                médical
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="box text-center">
+              <i class="fa fa-user-md fa-3x circled bg-skin"></i>
+              <h4 class="h-bold">Hospitalisation</h4>
+              <p>
+                C'est un réel de savoir les lits d'hospitalisation disponible.
+                Avec ce site, les hopitaux pourront voir les lits disponibles
+                afin de répartir les patients pour éviter une situation de
+                saturations des hopitaux et avoir une bonne répartition des
+                patients.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="box text-center">
+              <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
+              <h4 class="h-bold">Analyse médical</h4>
+              <p>
+                Faire une analyse est longue marche. Grace à l'IA, le docteur
+                peut avoir un apercu du résulat avec une certitude de 80%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: boxes -->
+
+  <section id="callaction" class="home-section paddingtop-40">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="callaction bg-gray"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <h2 class="h-bold text-center">Services</h2>
+  <!-- Section: services -->
+  <section id="service" class="home-section nopadding paddingtop-60">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <img
+              src="{% static 'medicio/img/dummy/img-1.jpg' %}"
+              class="img-responsive"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInRight" data-wow-delay="0.1s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-stethoscope fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Cardiologie</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wow fadeInRight" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-wheelchair fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Dermentologie</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+          <div class="wow fadeInRight" data-wow-delay="0.3s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-plus-square fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Medecine generale</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="wow fadeInRight" data-wow-delay="0.1s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-h-square fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Genocologie</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wow fadeInRight" data-wow-delay="0.2s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-filter fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Dentiste</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+          <div class="wow fadeInRight" data-wow-delay="0.3s">
+            <div class="service-box">
+              <div class="service-icon">
+                <span class="fa fa-user-md fa-3x"></span>
+              </div>
+              <div class="service-desc">
+                <h5 class="h-light">Neurologie</h5>
+                <p>a completer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: services -->
+
+  <!-- Section: team -->
+  <section id="doctor" class="home-section bg-gray paddingbot-60">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="section-heading text-center">
+              <h2 class="h-bold">Doctors</h2>
+            </div>
+          </div>
+          <div class="divider-short"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row"></div>
+    </div>
+  </section>
+  <!-- /Section: team -->
+
+  <!-- Section: works -->
+  <section id="facilities" class="home-section paddingbot-60">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="section-heading text-center">
+             <h2>Liste des médecins</h2>
+
+              <div
+                class="container mt-4 mb-4 p-3 d-flex justify-content-center"
+              >
+                {% for docteur in Docteurs %}
+
+                <div class="card p-4">
+                  <button class="btn btn-secondary">
+                    <img src="{{ docteur.photoProfil.url }}" width="100px" />
+                  </button>
+                  <div>
+                    <h3 class="idd">{{ docteur.prenom}} {{ docteur.nom}}</h3>
+                    <h5 class="idd">
+                      {{ docteur.special}}
+                      <h6 class="idd">{{ docteur.hopital.nomHopital}}</h6>
+                    </h5>
+                    <h3 class="idd">{{ docteur.specialite}}</h3>
+                    <p class="idd">{{ docteur.email}}</p>
+                    <p class="idd">Adresse:{{ docteur.adresse}}</p>
+                    <p class="idd">Matricule:{{ docteur.matricule}}</p>
+                    <p class="idd">Bureau:{{ docteur.bureau}}</p>
+
+                    <div
+                      class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"
+                    >
+                      <span><i class="fa fa-twitter"></i></span>
+                      <span><i class="fa fa-facebook-f"></i></span>
+                      <span><i class="fa fa-instagram"></i></span>
+                      <span><i class="fa fa-linkedin"></i></span>
+                    </div>
+                    <div class="px-2 rounded mt-4 date">
+                      <span class="join">Joined May,2021</span>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="divider-short"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+         <h2 class="h-bold">Medecins de la semaine</h2>
+              <p>Voici les médecins qui ont fait des preuves cette semaine</p>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="wow bounceInUp" data-wow-delay="0.2s">
+            <div id="owl-works" class="owl-carousel">
+              <div class="item">
+                <a
+                  href="{% static 'medicio/img/photo/1.jpg' %}"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="{% static 'medicio/img/works/1@2x.jpg' %}"
+                  ><img
+                    src="{% static 'medicio/img/photo/1.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+              <div class="item">
+                <a
+                  href="img/photo/2.jpg"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="img/works/2@2x.jpg"
+                  ><img
+                    src="{% static 'medicio/img/photo/2.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+              <div class="item">
+                <a
+                  href="img/photo/3.jpg"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="img/works/3@2x.jpg"
+                  ><img
+                    src="{% static 'medicio/img/photo/3.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+              <div class="item">
+                <a
+                  href="img/photo/4.jpg"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="img/works/4@2x.jpg"
+                  ><img
+                    src="{% static 'medicio/img/photo/4.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+              <div class="item">
+                <a
+                  href="img/photo/5.jpg"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="img/works/5@2x.jpg"
+                  ><img
+                    src="{% static 'medicio/img/photo/5.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+              <div class="item">
+                <a
+                  href="img/photo/6.jpg"
+                  title="This is an image title"
+                  data-lightbox-gallery="gallery1"
+                  data-lightbox-hidpi="img/works/6@2x.jpg"
+                  ><img
+                    src="{% static 'medicio/img/photo/6.jpg' %}"
+                    class="img-responsive"
+                    alt="img"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: works -->
+
+  <!-- Section: testimonial -->
+  <section
+    id="testimonial"
+    class="home-section paddingbot-60 parallax"
+    data-stellar-background-ratio="0.5"
+  >
+    <div class="carousel-reviews broun-block">
+      <div class="container">
+        <div class="row">
+          <div
+            id="carousel-reviews"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="item active">
+                <div class="col-md-4 col-sm-6">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Urgentiste</a>
+                    <div class="mark">
+                      Likes:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>
+                      Ce médecin a sauvé la vie d'un enfant de 7 ans qui était
+                      heurté par un camion
+                    </p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="{% static 'medicio/img/testimonials/1.jpg' %}"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Anna</a>
+                    <span>Hopital Fann</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 hidden-xs">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Chirugien</a>
+                    <div class="mark">
+                      Likes:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>
+                      Ce médecin a sauvé la vie d'une maman qui avait un cancer
+                      du sein
+                    </p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="{% static 'medicio/img/testimonials/2.jpg' %}"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Michelle</a>
+                    <span>Hopital Principal</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Généraliste</a>
+                    <div class="mark">
+                      Likes:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>
+                      Ce médecin a battu le record de consultations en réalisant
+                      73 consultations en une semaine
+                    </p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="{% static 'medicio/img/testimonials/3.jpg' %}"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Sophia</a>
+                    <span>Hopital régional de Saint-louis</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-md-4 col-sm-6">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Birth control pills</a>
+                    <div class="mark">
+                      My rating:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>
+                      Ne eam errem semper. Laudem detracto phaedrum cu vim, pri
+                      cu errem fierent fabellas. Quis magna in ius, pro vidit
+                      nonumy te, nostrud ...
+                    </p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="img/testimonials/4.jpg"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Lucas Thompson</a>
+                    <span>Austin, Texas</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 hidden-xs">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Radiology</a>
+                    <div class="mark">
+                      My rating:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star-empty"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>
+                      Ne eam errem semper. Laudem detracto phaedrum cu vim, pri
+                      cu errem fierent fabellas. Quis magna in ius, pro vidit
+                      nonumy te, nostrud ...
+                    </p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="img/testimonials/5.jpg"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Ella Mentree</a>
+                    <span>Fort Worth, Texas</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
+                  <div class="block-text rel zmin">
+                    <a title="" href="#">Cervical Lesions</a>
+                    <div class="mark">
+                      My rating:
+                      <span class="rating-input"
+                        ><span
+                          data-value="0"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="1"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="2"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="3"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="4"
+                          class="glyphicon glyphicon-star"
+                        ></span
+                        ><span
+                          data-value="5"
+                          class="glyphicon glyphicon-star"
+                        ></span>
+                      </span>
+                    </div>
+                    <p>Hopital Principal</p>
+                    <ins class="ab zmin sprite sprite-i-triangle block"></ins>
+                  </div>
+                  <div class="person-text rel text-light">
+                    <img
+                      src="img/testimonials/6.jpg"
+                      alt=""
+                      class="person img-circle"
+                    />
+                    <a title="" href="#">Suzanne Adam</a>
+                    <span>Detroit, Michigan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              class="left carousel-control"
+              href="#carousel-reviews"
+              role="button"
+              data-slide="prev"
+            >
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a
+              class="right carousel-control"
+              href="#carousel-reviews"
+              role="button"
+              data-slide="next"
+            >
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Section: testimonial -->
+
+  <section id="partner" class="home-section paddingbot-60">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="wow lightSpeedIn" data-wow-delay="0.1s">
+            <div class="section-heading text-center">
+              <h2 class="h-bold">Nos partenaires</h2>
+            </div>
+          </div>
+          <div class="divider-short"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <div class="partner">
+            <a href="#"
+              ><img width="250px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCDxX0_5Z-tUFFjUUeNH9WTJ-wmpvP0BFb8jdtaXV8CtWovmgMwhi43xPynqdt6v069kU&usqp=CAU" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="partner">
+            <a href="#"
+              ><img height="100px" src="data:image/png;base64,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" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="partner">
+            <a href="#"
+              ><img width="250px" height="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHAxyS4fs2gHydqaCiyspS2oa7TdA7ObAKVHf0krErW-EG6r_6kPjZ9t_t0ccKu0wLB48&usqp=CAU" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="partner">
+            <a href="#"
+              ><img width="250px" height="100px" src="https://pasteur-network.org/wp-content/uploads/2021/01/Logo-Institut-Pasteur-Dakar-1024x724.png" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="widget">
+              <h5>A propos de Allo Docteur</h5>
+              <p>La santé pour tous</p>
+            </div>
+          </div>
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="widget">
+              <h5>Information</h5>
+              <ul>
+                <li><a href="#">Acceuil</a></li>
+                <li><a href="#">Docteur</a></li>
+                <li><a href="#">Traitement médical</a></li>
+                <li><a href="#">Termes & conditions</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="widget">
+              <h5>Allo Docteur</h5>
+              <p>La Santé pour tous !</p>
+              <ul>
+                <li>
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
+                  </span>
+                  7j/7j - 24h/24h
+                </li>
+                <li>
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
+                  </span>
+                  77 878 87 87
+                </li>
+                <li>
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                  </span>
+                  allodocteur@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="widget">
+              <h5>Adresse</h5>
+              <p>Avenue Cheikh Anta Diop, Dakar</p>
+            </div>
+          </div>
+          <div class="wow fadeInDown" data-wow-delay="0.1s">
+            <div class="widget">
+              <h5>Nous Suivre</h5>
+              <ul class="company-social">
+                <li class="social-facebook">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="social-twitter">
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="social-google">
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                </li>
+                <li class="social-vimeo">
+                  <a href="#"><i class="fa fa-vimeo-square"></i></a>
+                </li>
+                <li class="social-dribble">
+                  <a href="#"><i class="fa fa-dribbble"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="wow fadeInLeft" data-wow-delay="0.1s">
+              <div class="text-left">
+                <p>&copy;Copyright 2015 - alloDocteur. All rights reserved.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="wow fadeInRight" data-wow-delay="0.1s">
+              <div class="text-right"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+  <!-- Core JavaScript Files -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/jquery.appear.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/nivo-lightbox.min.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+{% endblock %}

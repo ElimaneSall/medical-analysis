@@ -4,6 +4,7 @@
     >Créer un service</a
   >
 </button>
+
 <div class="main-content">
   <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
@@ -103,7 +104,7 @@
             <tbody>
               {% for service in ServicesHopital %}
               <tr>
-                <td>{{ service.idService}}</td>
+                <td>{{ service.id}}</td>
                 <td>{{ service.nomService}}</td>
                 <td>{{service.chefService}}</td>
                 <td>{{service.nombreLit}}</td>
@@ -135,11 +136,11 @@
         </div>
         <div class="card-content">
           <div class="streamline">
-            {% for rv in RendezVousMedicalDocteur %}
+            {% for d in Docteurs %}
             <div class="sl-item sl-primary">
               <div class="sl-content">
                 <small class="text-muted"
-                  >De {{rv.heureDebut}} à {{rv.heureDebut}}</small
+                  >De {{d.id}} à {{rv.heureDebut}}</small
                 >
                 <p>{{rv.patient.prenom}} {{rv.patient.nom}}</p>
 

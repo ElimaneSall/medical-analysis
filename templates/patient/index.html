@@ -48,7 +48,7 @@
         </div>
         <div class="card-content">
           <p class="category"><strong>Analyse médicale</strong></p>
-          <h3 class="card-title">23,100</h3>
+          <h3 class="card-title">3</h3>
         </div>
         <div class="card-footer">
           <div class="stats">
@@ -66,7 +66,7 @@
         </div>
         <div class="card-content">
           <p class="category"><strong>Médicaments</strong></p>
-          <h3 class="card-title">+245</h3>
+          <h3 class="card-title">2</h3>
         </div>
         <div class="card-footer">
           <div class="stats">
@@ -105,7 +105,7 @@
                 <td>{{dossier.diagnostic}}</td>
                 <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
                 <td>{{dossier.date_creationDossierMedical}}</td>
-                <td></td>
+                <td>{{dossier.statut}}</td>
                 <td><a href="{% url 'pdf' dossier.id %}">Voir en PDF</a></td>
               </tr>
               {% endfor %}
@@ -134,6 +134,9 @@
                 <p>Au Docteur {{rv.docteur.prenom}} {{rv.docteur.nom}}</p>
 
                 <p>{{rv.objectRV}}</p>
+                <h3>
+                <mark>{{rv.docteur.hopital.nomHopital}} {{rv.docteur.bureau}}</mark>
+                  </h3>
               </div>
             </div>
             {% endfor %}

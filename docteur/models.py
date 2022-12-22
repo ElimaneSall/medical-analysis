@@ -17,21 +17,20 @@ class DossierMedical(models.Model):
     docteur = models.ForeignKey(Personne, on_delete=models.CASCADE, default="1", related_name="docteur_dossiermedical")
     patient = models.ForeignKey(Personne, on_delete=models.CASCADE, default="1", related_name="DossierMedical_patient")
     date_creationDossierMedical= models.DateTimeField(default=timezone.now)
-    
     qrCode = models.ImageField(upload_to="qrCode", blank=True, null=True, default=None)
     def __str__(self):
         return str(self.docteur) + " " + str(self.patient)
     
     def saveQRcode(self, *args, **kwargs):
-        qrcode_img = qrcode.make(self.medicaments)
+        data = 'http://www.alloDocteur/docteur/pdf/24/'
+        img = qrcode.make(data)
         canvas = Image.new('RGB', (290, 290), '#20c997')
         draw = ImageDraw.Draw(canvas)
-        canvas.paste(qrcode_img)
-        fname = f'qr_code_{self.medicaments}' + '.png'
+        canvas.paste(img)
+        fname = f'qr_code_{self.id}' + '.png'
         buffer = BytesIO()
         canvas.save(buffer, 'PNG')
         self.qrCode.save(fname, File(buffer), save=False)
-        
         canvas.close()
         super().save(*args, **kwargs)
    
@@ -53,7 +52,7 @@ class RendezVousMedical(models.Model):
 class AnalyseMedicale(models.Model):
     scanner =  models.ImageField(upload_to="users", blank=True, default=None, null=True)
     butAnalyse = models.TextField(default=" ")
-    resultat = models.CharField(max_length=200, default=" ")
+    resultat = models.CharField(max_length=200, default="Paludisme", null=True, blank=True)
     observation = models.TextField(default=" ")
     dateAnalyse = models.DateTimeField(default=timezone.now)
     docteur = models.ForeignKey(Personne, on_delete=models.CASCADE, default="1", related_name="docteur_analysemedical")

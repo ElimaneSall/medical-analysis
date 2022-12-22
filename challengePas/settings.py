@@ -48,9 +48,8 @@ INSTALLED_APPS = [
     'account',
     'hopital',
 
-    'tailwind',
-    'theme',
-    'django_browser_reload',
+
+    #'django_browser_reload',
 ]
 TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = [
@@ -62,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    #"django_browser_reload.middleware.BrowserReloadMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -151,43 +150,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# def get_session():
-#     config = tf.ConfigProto()
-#     config.gpu_options.allow_growth = True
-#     return tf.Session(config=config)
+# import keras
+# import numpy as np
+# from keras import backend as K
+# import tensorflow as tf
+# from tensorflow.python.keras.backend import set_session
+# from keras.applications import vgg16
 
-# K.tensorflow_backend.set_session(get_session())
-
-# config = tf.ConfigProto()
-# config.gpu_options.allow_growth = True
-# SESS = tf.Session(config=config)
-# print("model loading")
-# GRAPH1 = tf.get_default_graph()
-
-# set_session(SESS)
-# # Load the VGG model
-# VGG_MODEL = vgg16.VGG16(weights="imagenet")
-import keras
-import numpy as np
-from keras import backend as K
-import tensorflow as tf
-from tensorflow.python.keras.backend import set_session
-from keras.applications import vgg16
-
-
+#
 # def get_session():
 #     config = tf.compat.v1.ConfigProto()
 #     config.gpu_options.allow_growth = True
 #     return tf.compat.v1.Session(config=config)
-
+#
 # K.set_session(get_session())
-
+#
 # config = tf.compat.v1.ConfigProto()
 # config.gpu_options.allow_growth = True
 # SESS = tf.compat.v1.Session(config=config)
 # print("model loading")
 # GRAPH1 = tf.compat.v1.get_default_graph()
-
+#
 # set_session(SESS)
-# # Load the VGG model
+# # # Load the VGG model
 # VGG_MODEL = vgg16.VGG16(weights="imagenet")

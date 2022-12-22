@@ -1,4 +1,5 @@
 {% extends 'hopital/baseHopital.html' %} {% load i18n %} {% block content %}
+
 <div class="main-content">
   <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
@@ -75,7 +76,6 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-lg-7 col-md-12">
       <div class="card" style="min-height: 485px">
@@ -84,28 +84,46 @@
           <p class="category">la liste</p>
         </div>
         <div class="card-content table-responsive">
-          <table class="table table-hover">
+            <table class="table table-hover">
             <thead class="text-primary">
               <tr>
                 <th>Patient</th>
-                <th>Pronostic</th>
+                 <th>Pronostic</th>
                 <th>Diagnostic</th>
                 <th>Medicaments</th>
-                <th>Date</th>
+                  <th>Date</th>
+                <th>Statut</th>
+                <th>Version Pdf</th>
+
               </tr>
             </thead>
             <tbody>
-              {% for dossier in DossierMedicalMedecin %}
-              <p></p>
-              {% if dossier.docteur.NumeroService == "123" %}
-              <tr>
-                <td>{{ dossier.patient.prenom }} {{ dossier.patient.nom }}</td>
-                <td>{{dossier.pronostic}}</td>
-                <td>{{dossier.diagnostic}}</td>
-                <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
-                <td>{{dossier.date_creationDossierMedical}}</td>
-              </tr>
-              {% endif %} {% endfor %}
+              {% for dossier in Dossiers %}
+               {% if dossier.docteur.hopital == hopital %}
+            <tr>
+              <td>
+                <div style="display: flex; flex-direction: row">
+                  <img
+                    width="50px"
+                    height="50px"
+                       class="img-responsive"
+                    alt=""
+                  />
+                  {{ dossier.patient.prenom }} {{ dossier.patient.nom }}
+                </div>
+              </td>
+              <td>{{dossier.pronostic}}</td>
+              <td>{{dossier.diagnostic}}</td>
+              <td class="badge bg-soft-success">{{ dossier.medicaments}}</td>
+              <td>{{dossier.date_creationDossierMedical}}</td>
+              <td>{{dossier.statut}}</td>
+              <td>
+                <a href="{% url 'pdf' dossier.id %}">Voir en PDF</a>
+              </td>
+            </tr>
+              {% endif %}
+              <p>{{d.docteur.hopital}}</p>
+            {% endfor %}
             </tbody>
           </table>
         </div>
@@ -119,17 +137,20 @@
         </div>
         <div class="card-content">
           <div class="streamline">
-            {% for rv in RendezVousMedicalDocteur %}
+            {% for rv in RendezVousMedicalHopital %}
+              {% if rv.docteur.hopital == hopital %}
             <div class="sl-item sl-primary">
               <div class="sl-content">
                 <small class="text-muted"
-                  >De {{rv.heureDebut}} à {{rv.heureDebut}}</small
+                  >De {{rv.heureDebut}} à {{rv.heureFin}}</small
                 >
                 <p>{{rv.patient.prenom}} {{rv.patient.nom}}</p>
 
                 <p>{{rv.objectRV}}</p>
+                <p>Rendez-vous avec le Docteur {{rv.docteur.prenom}} {{rv.docteur.nom}} bureau{{rv.docteur.bureau}}  </p>
               </div>
             </div>
+            {% endif %}
             {% endfor %}
           </div>
         </div>

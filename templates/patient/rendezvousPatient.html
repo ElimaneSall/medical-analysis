@@ -7,20 +7,28 @@
 </button>
 <h6>Nom du patient: {{ request.user }}</h6>
 <div class="row" style="justify-content: center">
-  <div id="service" class="home-section nopadding pt-5 row col-lg-12 col-md-12">
     <div
-      class="container col-sm-12 col-md-12"
+      class="container bg-white py-5 col-sm-12 col-md-12"
       style="display: flex; flex-wrap: wrap"
     >
       {% for rv in RendezVousMedicalPatient %}
-      <div class="row col-12 col-lg-6 col-sm-12 UnRV">
+      <div class="row col-12 col-lg-6 col-sm-12  UnRV" >
         <div class="col-sm-7 col-md-6">
           <div class="wow fadeInUp" data-wow-delay="0.2s">
+          {% if rv.docteur.photoProfil.url %}
             <img
-              src="{% static 'medicio/img/dummy/img-1.jpg' %}"
+             src="{{ rv.docteur.photoProfil.url }}"
               class="img-responsive"
               alt=""
             />
+            {% else %}
+             <img
+             src="{% static 'assets/img/doctors/doctors-1.jpg' %}"
+              class="img-responsive"
+              alt=""
+            />
+            <p>vide</p>
+            {% endif %}
             <div class="text-center">
               <p>Docteur {{rv.docteur.prenom}} {{rv.docteur.nom}}</p>
               <p>Medecin generaliste</p>
@@ -71,8 +79,11 @@
                 <span class="fa fa-user-md fa-3x"></span>
               </div>
               <div class="service-desc">
-                <h5 class="h-light">Heure de fin</h5>
+
+                   <h5 class="h-light">Heure de fin</h5>
                 <p>{{ rv.heureFin}}</p>
+
+
               </div>
             </div>
           </div>

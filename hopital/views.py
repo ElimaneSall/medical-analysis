@@ -11,23 +11,21 @@ from hopital.serviceForm import ServiceForm
 
 
 def indexHopital(request):
-    DossierMedicalMedecin = DossierMedical.objects.all().order_by('-id')
-    RendezVousMedicalDocteur = RendezVousMedical.objects.all().order_by('-id')
-  
-    Docteurs = Personne.objects.filter(status="docteur").order_by('-id')
-
-    totalDocteur = Docteurs.count
-    return render(request, 'hopital/indexHopital.html', {'Docteurs':Docteurs, 'DossierMedicalMedecin':DossierMedicalMedecin, 'RendezVousMedicalDocteur':RendezVousMedicalDocteur})
-
+    h = Hopital.objects.get(idResponsable=request.user.id)
+    Docteurs = Personne.objects.filter(status="docteur", hopital=h)
+    Dossiers = DossierMedical.objects.all()
+    RendezVousMedicalHopital = RendezVousMedical.objects.all()
+    return render(request, 'hopital/indexHopital.html', {'hopital':h ,'docteurs':Docteurs,
+                                                         'Dossiers':Dossiers, "RendezVousMedicalHopital":RendezVousMedicalHopital})
 def profilHopital(request):
    
-    if(Hopital.objects.filter(idHopital=request.user.id).exists()):
-        hopital = Hopital.objects.get(idHopital=request.user.id)
+    if(Hopital.objects.filter(idResponsable=request.user.id).exists()):
+        hopital = Hopital.objects.get(idResponsable=request.user.id)
         print("-"*100)
         return render(request, 'hopital/profilHopital.html', {'hopital':hopital})
     form = ProfilHopitalForm()
     print('-'*100)
-    print(Hopital.objects.check(idHopital=request.user.id))
+    print(Hopital.objects.check(idResponsable=request.user.id))
     return render(request, 'hopital/suiteInscriptionHopital.html', {'form':form})
    
 
@@ -74,10 +72,23 @@ def creerService(request):
     return render(request, 'hopital/creerService.html', {'form':form})
 
 def serviceHoiptal(request):
-    if(Service.objects.filter().exists()):
-        h = Hopital.objects.get(idResponsable=request.user.id)
+    h = Hopital.objects.get(idResponsable=request.user.id)
+    if(Service.objects.filter(hopital=h).exists()):
         ServicesHopital = Service.objects.filter(hopital=h)
         ServicesDocteurs = Personne.objects.filter(status="docteur")
-        return render(request, 'hopital/serviceHoiptal.html', {'ServicesHopital':ServicesHopital, 'ServicesDocteurs':ServicesDocteurs})
+        return render(request, 'hopital/serviceHoiptal.html', { 'ServicesHopital':ServicesHopital,
+                                                                'ServicesDocteurs':ServicesDocteurs})
     form = ServiceForm()
     return render(request, 'hopital/creerService.html', {'form':form})
+def docteurs(request):
+    h = Hopital.objects.get(idResponsable=request.user.id)
+    Docteurs = Personne.objects.filter(status="docteur", hopital=h)
+    Dossiers = DossierMedical.objects.all()
+    return render(request, "hopital/docteurs.html", {'hopital':h ,'docteurs':Docteurs, 'Dossiers':Dossiers} )
+
+def VoirDossierMedicalHopital(request):
+    h = Hopital.objects.get(idResponsable=request.user.id)
+    Docteurs = Personne.objects.filter(status="docteur", hopital=h)
+    Dossiers = DossierMedical.objects.all()
+    return render(request, "hopital/VoirDossierMedicalHopital.html",{'hopital':h ,'docteurs':Docteurs,
+                                                                     'Dossiers':Dossiers} )

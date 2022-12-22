@@ -7,7 +7,7 @@ from .models import  Hopital
 class ProfilHopitalForm(forms.ModelForm):
     class Meta:
         model = Hopital
-        fields = ['logo','nomHopital', 'idHopital', 'adresse', 'telephone', 'email' ]
+        fields = ['logo','nomHopital',  'adresse', 'telephone', 'email' ]
         widgets = {
             'logo': forms.FileInput(attrs={'class': 'form-control input-md', }),
             'nomHopital': forms.TextInput(attrs={'class': 'form-control input-md', }),

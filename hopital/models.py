@@ -10,15 +10,12 @@ class Hopital(models.Model):
     idResponsable = models.CharField(default="", max_length=50)
     logo =models.ImageField(upload_to="logoHopital", blank=True, default=None, null=True)
     #services = models.ManyToManyField("Service", verbose_name="services_hopital")
-    idHopital =models.CharField(default="", max_length=50,unique=True)
+    #idHopital =models.CharField(default="", max_length=50,unique=True)
     #responsable = models.ForeignKey(Personne, on_delete=models.CASCADE, default="1", related_name="hopital_personne")
     def __str__(self):
-        return self.nomHopital + str(self.idHopital)
-   
-
+        return self.nomHopital
 class Service(models.Model):
     nomService = models.CharField(default="", max_length=50)
-    idService = models.CharField(default="", max_length=50)
     idResponsable = models.CharField(default="", max_length=50)
     chefService = models.CharField(default="", max_length=50)
     adresse = models.CharField(default="", max_length=50)

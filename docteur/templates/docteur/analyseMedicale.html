@@ -8,7 +8,6 @@
   >
 </button>
 
-<form class="" method="POST" action="{% url 'analyseMedicale' %}">
   <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s"></div>
   {% csrf_token %}
   <div class="form-wrapper">
@@ -23,7 +22,7 @@
           <form
             class="lead"
             method="POST"
-            action="{% url 'updateProfilDocteur' %}"
+            action="{% url 'analyseMedicale' %}"
             enctype="multipart/form-data"
           >
             {% csrf_token %}
@@ -68,6 +67,12 @@
                   {{form.docteur}}
                 </div>
               </div>
+               <div class="col-xs-6 col-sm-6 col-md-6" style="display: None">
+                <div class="form-group">
+                  <label>Description</label>
+                  {{form.resultat}}
+                </div>
+              </div>
             </div>
             <input
               type="submit"
@@ -75,9 +80,7 @@
               class="btn btn-skin btn-block btn-lg"
             />
 
-            <p class="lead-footer">
-              * We'll contact you by phone & email later
-            </p>
+            <p class="lead-footer"></p>
           </form>
           {% endblock %}
         </div>

@@ -14,6 +14,7 @@ urlpatterns = [
     path("profilDocteur/", views.profilDocteur, name="profilDocteur"),
     path("updateProfilDocteur/",views.updateProfilDocteur, name="updateProfilDocteur"),
     path("creerRendezVousPourPatient/", views.creerRendezVousPourPatient, name="creerRendezVousPourPatient"),
+    path("pdf", views.samaPDF, name="samaPDF"),
     path("IA/", views.IA, name="IA")
 
 ]
